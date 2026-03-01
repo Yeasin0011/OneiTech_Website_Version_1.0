@@ -18,7 +18,7 @@ const About = () => {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-start min-h-screen w-full px-6 py-20 pt-32"
+      className="flex flex-col items-center justify-start min-h-screen w-full px-4 sm:px-6 py-12 sm:py-20 pt-24 sm:pt-32"
     >
       <motion.div
         key={animationTriggered ? "about-animate" : "about-initial"}
@@ -34,7 +34,7 @@ const About = () => {
         <div className="text-center space-y-12">
           {/* Main Title */}
           <div>
-            <h1 className="text-5xl font-bold mb-4">About OneiTech</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">About OneiTech</h1>
             <div className="h-1 w-20 bg-gradient-to-r from-teal-400 to-cyan-400 mx-auto"></div>
           </div>
 
@@ -90,7 +90,7 @@ const About = () => {
               &ldquo;Don&apos;t just adapt to the future. <span className="text-teal-400 font-semibold">Build it.</span>&rdquo;
             </p>
             <p className="text-gray-400 mt-4">
-              We engineer tomorrow's edge. We deliver scalable, intelligent tech that turns your biggest challenges into your greatest competitive advantages.
+              We engineer tomorrow&apos;s edge. We deliver scalable, intelligent tech that turns your biggest challenges into your greatest competitive advantages.
             </p>
           </motion.div>
         </div>

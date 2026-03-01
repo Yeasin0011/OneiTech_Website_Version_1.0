@@ -17,7 +17,7 @@ const AnimatedTextUnderlign = () => {
   };
   return (
     <div>
-      <h1 className="text-5xl font-bold tracking-tight text-gray-200 sm:text-7xl">
+      <h1 className="text-3xl font-bold tracking-tight text-gray-200 sm:text-5xl md:text-7xl">
         {' '}
         <span className="relative whitespace-nowrap text-blue-800 font-alliance">
           <motion.svg

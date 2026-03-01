@@ -49,7 +49,7 @@ const Team = () => {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-start min-h-screen w-full px-6 py-20 pt-32"
+      className="flex flex-col items-center justify-start min-h-screen w-full px-4 sm:px-6 py-12 sm:py-20 pt-24 sm:pt-32"
     >
       <motion.div
         key={animationTriggered ? "team-animate" : "team-initial"}
@@ -62,7 +62,7 @@ const Team = () => {
         }}
         className="w-full max-w-6xl"
       >
-        <h2 className="text-4xl font-bold mb-4 text-center">Team Members & Culture</h2>
+        <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-center">Team Members & Culture</h2>
         <p className="text-lg text-center mb-12">
           [Placeholder: Describe your company culture, values, and what makes your team special.]
         </p>

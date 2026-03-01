@@ -25,7 +25,9 @@ export default function Home() {
       direction = event.deltaY > 0 ? 1 : -1;
     } else {
       const touch = event.touches[0] || event.changedTouches[0];
-      direction = touch.clientY < startYRef.current ? 1 : -1;
+      const diff = startYRef.current - touch.clientY;
+      if (Math.abs(diff) < 30) return; // Minimum swipe threshold
+      direction = diff > 0 ? 1 : -1;
     }
 
     const nextSection = Math.min(Math.max(activeSection + direction, 0), sections.length - 1);
@@ -67,7 +69,7 @@ export default function Home() {
 
   return (
     <div className="relative overflow-hidden h-screen">
-      <div className="fixed top-1/2 left-4 transform -translate-y-1/2 z-50">
+      <div className="fixed top-1/2 left-4 transform -translate-y-1/2 z-50 hidden md:block">
         {sections.map((section, index) => (
           <div
             key={section}
@@ -145,7 +147,7 @@ const Section: React.FC<SectionProps> = ({
   return (
     <motion.div
       id={id}
-      className="absolute top-0 left-0 w-full h-full flex items-center justify-center"
+      className="absolute top-0 left-0 w-full h-full flex items-center justify-center overflow-y-auto overflow-x-hidden"
       initial="hidden"
       animate={isActive ? "visible" : "exit"}
       variants={variants}

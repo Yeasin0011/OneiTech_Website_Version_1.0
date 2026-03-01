@@ -57,7 +57,7 @@ const Contact = () => {
   return (
     <div className="w-full">
       {/* Contact Details Section */}
-      <div className="relative flex flex-col items-center justify-center min-h-screen px-6 py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+      <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
         <div className="absolute left-1/2 transform -translate-x-1/2 w-full pointer-events-none" style={{ top: "-10%", height: "100%" }}>
           <LampContainer>
             <div></div>
@@ -124,7 +124,7 @@ const Contact = () => {
       </div>
 
       {/* Contact Form Section */}
-      <div id="form" className="min-h-screen flex flex-col items-center justify-center px-6 py-20 bg-black">
+      <div id="form" className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-12 sm:py-20 bg-black">
         <motion.div
           key={animationTriggered ? "form-animate" : "form-initial"}
           initial={{ opacity: 0, y: 30 }}

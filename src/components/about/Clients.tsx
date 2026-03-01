@@ -54,7 +54,7 @@ const Clients = () => {
   return (
     <div
       ref={ref}
-      className="flex flex-col items-center justify-start min-h-screen w-full px-6 py-20 pt-32"
+      className="flex flex-col items-center justify-start min-h-screen w-full px-4 sm:px-6 py-12 sm:py-20 pt-24 sm:pt-32"
     >
       <motion.div
         key={animationTriggered ? "clients-animate" : "clients-initial"}

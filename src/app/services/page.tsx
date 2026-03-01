@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { NavbarMenu } from "@/components/Navbar";
 
 const services = [
   {
@@ -68,17 +69,18 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 py-20 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900 pt-20 pb-10 px-4">
+      <NavbarMenu />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         className="max-w-6xl mx-auto"
       >
-        <h1 className="text-5xl font-bold text-white mb-4 text-center">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 text-center pt-8">
           Our Services
         </h1>
-        <p className="text-xl text-gray-300 text-center mb-16 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-gray-300 text-center mb-8 sm:mb-16 max-w-2xl mx-auto">
           Comprehensive solutions tailored to your business needs
         </p>
 

@@ -10,7 +10,7 @@ const ContactHome = () => {
   return (
     <div className="w-full">
       {/* Contact Details Section - Simplified for Home Page */}
-      <div className="relative flex flex-col items-center justify-center min-h-screen px-6 py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+      <div className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
         <div className="absolute left-1/2 transform -translate-x-1/2 w-full pointer-events-none" style={{ top: "-10%", height: "100%" }}>
           <LampContainer>
             <div></div>
