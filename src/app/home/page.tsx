@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Hero from "../../components/home/Hero";
 import { Services } from "../../components/home/Services";
@@ -9,84 +9,82 @@ import { Testimonial } from "@/components/home/Testimonial";
 import Featured from "@/components/home/Featured";
 import { Softwares } from "@/components/home/Softwares";
 import ContactHome from "@/components/home/ContactHome";
+import { NavbarMenu } from "@/components/Navbar";
 
-export default function Home() {
-  const sections = ["hero", "features", "softwares", "choose", "testimonial", "featured", "expertise", "contact"];
+/* ── Mobile layout: plain scrollable page ───────────────────── */
+function MobileHome() {
+  return (
+    <div className="min-h-screen w-full overflow-x-hidden">
+      <NavbarMenu />
+      <div className="pt-14">
+        <Hero />
+        <Services />
+        <Softwares />
+        <Choice />
+        <Testimonial />
+        <Featured />
+        <Expertise />
+        <ContactHome />
+      </div>
+    </div>
+  );
+}
+
+/* ── Desktop layout: fullpage swipe sections ────────────────── */
+const sectionNames = ["hero", "features", "softwares", "choose", "testimonial", "featured", "expertise", "contact"] as const;
+
+function DesktopHome() {
   const [activeSection, setActiveSection] = useState(0);
   const [scrollDirection, setScrollDirection] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
-  const startYRef = useRef(0);
+  const isAnimatingRef = useRef(false);
+  const activeSectionRef = useRef(0);
 
-  const handleScroll = (event: WheelEvent | TouchEvent) => {
-    if (isAnimating) return;
-
-    let direction: number;
-    if (event instanceof WheelEvent) {
-      direction = event.deltaY > 0 ? 1 : -1;
-    } else {
-      const touch = event.touches[0] || event.changedTouches[0];
-      const diff = startYRef.current - touch.clientY;
-      if (Math.abs(diff) < 30) return; // Minimum swipe threshold
-      direction = diff > 0 ? 1 : -1;
-    }
-
-    const nextSection = Math.min(Math.max(activeSection + direction, 0), sections.length - 1);
-    if (nextSection !== activeSection) {
+  const navigate = (direction: number) => {
+    if (isAnimatingRef.current) return;
+    const next = Math.min(Math.max(activeSectionRef.current + direction, 0), sectionNames.length - 1);
+    if (next !== activeSectionRef.current) {
       setScrollDirection(direction);
-      setActiveSection(nextSection);
+      setActiveSection(next);
+      activeSectionRef.current = next;
+      isAnimatingRef.current = true;
       setIsAnimating(true);
     }
   };
 
   useEffect(() => {
-    const handleTouchStart = (event: TouchEvent) => {
-      const touch = event.touches[0];
-      startYRef.current = touch.clientY;
-    };
-
-    const handleTouchMove = (event: TouchEvent) => {
-      event.preventDefault();
-      handleScroll(event);
-    };
-
-    window.addEventListener("wheel", handleScroll);
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleTouchMove, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchmove", handleTouchMove);
-    };
-  }, [activeSection, isAnimating]);
-
-  const handleClick = (index: number) => {
-    if (isAnimating) return;
-
-    setActiveSection(index);
-    setIsAnimating(true);
-  };
+    const handleWheel = (e: WheelEvent) => navigate(e.deltaY > 0 ? 1 : -1);
+    window.addEventListener("wheel", handleWheel, { passive: true });
+    return () => window.removeEventListener("wheel", handleWheel);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="relative overflow-hidden h-screen">
-      <div className="fixed top-1/2 left-4 transform -translate-y-1/2 z-50 hidden md:block">
-        {sections.map((section, index) => (
+      {/* Side dots */}
+      <div className="fixed top-1/2 left-4 -translate-y-1/2 z-50">
+        {sectionNames.map((section, index) => (
           <div
             key={section}
             className="relative mb-2 flex items-center"
-            onClick={() => handleClick(index)}
+            onClick={() => {
+              if (isAnimatingRef.current) return;
+              const dir = index > activeSectionRef.current ? 1 : -1;
+              setScrollDirection(dir);
+              setActiveSection(index);
+              activeSectionRef.current = index;
+              isAnimatingRef.current = true;
+              setIsAnimating(true);
+            }}
           >
-            {/* Larger invisible touch target (min 44×44 px) */}
             <div className="flex items-center justify-center w-11 h-11 cursor-pointer">
               <motion.div
-                className={`w-3 h-3 rounded-full ${
-                  activeSection === index ? "bg-teal-400" : "bg-gray-800"
-                }`}
+                className={`w-3 h-3 rounded-full ${activeSection === index ? "bg-teal-400" : "bg-gray-800"}`}
                 whileHover={{ scale: 1.2 }}
               />
             </div>
             <motion.div
-              className="absolute left-11 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 pointer-events-none"
+              className="absolute left-11 top-1/2 -translate-y-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 pointer-events-none"
               whileHover={{ opacity: 1 }}
             >
               {section}
@@ -96,14 +94,15 @@ export default function Home() {
       </div>
 
       <div className="h-screen">
-        {sections.map((section, index) => (
-          <Section
+        {sectionNames.map((section, index) => (
+          <DesktopSection
             key={section}
             id={section}
             name={section}
             isActive={activeSection === index}
             scrollDirection={scrollDirection}
-            setIsAnimating={setIsAnimating}
+            onAnimationStart={() => { isAnimatingRef.current = true; setIsAnimating(true); }}
+            onAnimationComplete={() => { isAnimatingRef.current = false; setIsAnimating(false); }}
           />
         ))}
       </div>
@@ -111,39 +110,21 @@ export default function Home() {
   );
 }
 
-interface SectionProps {
+interface DesktopSectionProps {
   id: string;
   name: string;
   isActive: boolean;
   scrollDirection: number;
-  setIsAnimating: React.Dispatch<React.SetStateAction<boolean>>;
+  onAnimationStart: () => void;
+  onAnimationComplete: () => void;
 }
 
-const Section: React.FC<SectionProps> = ({
-  id,
-  name,
-  isActive,
-  scrollDirection,
-  setIsAnimating,
-}) => {
+const DesktopSection: React.FC<DesktopSectionProps> = ({ id, name, isActive, scrollDirection, onAnimationStart, onAnimationComplete }) => {
   const variants = {
-    hidden: {
-      opacity: 0,
-      y: scrollDirection > 0 ? 50 : -50,
-      scale: 0.95
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1
-    },
-    exit: {
-      opacity: 0,
-      y: scrollDirection > 0 ? -50 : 50,
-      scale: 0.95
-    },
+    hidden:  { opacity: 0, y: scrollDirection > 0 ? 50 : -50, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+    exit:    { opacity: 0, y: scrollDirection > 0 ? -50 : 50, scale: 0.95 },
   };
-
   return (
     <motion.div
       id={id}
@@ -152,46 +133,42 @@ const Section: React.FC<SectionProps> = ({
       animate={isActive ? "visible" : "exit"}
       variants={variants}
       transition={{ duration: 1 }}
-      onAnimationStart={() => setIsAnimating(true)}
-      onAnimationComplete={() => setIsAnimating(false)}
+      onAnimationStart={onAnimationStart}
+      onAnimationComplete={onAnimationComplete}
       style={{ pointerEvents: isActive ? "auto" : "none" }}
     >
-      {isActive && <SectionContent name={name} />}
+      {isActive && <DesktopSectionContent name={name} />}
     </motion.div>
   );
 };
 
-interface SectionContentProps {
-  name: string;
-}
-
-const SectionContent: React.FC<SectionContentProps> = ({ name }) => {
+const DesktopSectionContent: React.FC<{ name: string }> = ({ name }) => {
   switch (name) {
-    case "hero":
-      return <Hero />;
-    case "features":
-      return <Services />;
-    case "softwares":
-      return <Softwares />;
-    case "choose":
-      return <Choice />;
-    case "testimonial":
-      return <Testimonial />;
-    case "featured":
-      return <Featured />;
-    case "expertise":
-      return <Expertise />;
-    case "contact":
-      return <ContactHome />;
-    default:
-      return (
-        <div>
-          <h1 className="text-4xl mb-4">Section</h1>
-          <p className="text-lg">
-            This is a default section with some placeholder content.
-          </p>
-        </div>
-      );
-  }
+    case "hero":        return <Hero />;
+    case "features":   return <Services />;
+    case "softwares":  return <Softwares />;
+    case "choose":     return <Choice />;
+    case "testimonial":return <Testimonial />;
+    case "featured":   return <Featured />;
+    case "expertise":  return <Expertise />;
+    case "contact":    return <ContactHome />;
+    default:           return null;
+  };
 };
-    
+
+/* ── Root: pick layout based on screen width ────────────────── */
+export default function Home() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    setMounted(true);
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  if (!mounted) return null;
+  return isMobile ? <MobileHome /> : <DesktopHome />;
+}
