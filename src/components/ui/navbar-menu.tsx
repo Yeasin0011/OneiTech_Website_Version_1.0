@@ -26,16 +26,18 @@ export const MenuItem = ({
   children?: React.ReactNode;
   href?: string;
 }) => {
-  const isContact = item === "Contact";
-  const hoverClass = isContact ? "" : "hover:opacity-[0.9]";
-  
+  const [open, setOpen] = React.useState(false);
   return (
-    <div onMouseEnter={() => setActive(item)} className="relative ">
+    <div
+      onMouseEnter={() => children && setActive(item)}
+      onClick={() => children && setOpen((v) => !v)}
+      className="relative "
+    >
       {href ? (
         <Link href={href}>
           <motion.p
             transition={{ duration: 0.3 }}
-            className={`cursor-pointer ${hoverClass} text-white`}
+            className="cursor-pointer hover:opacity-[0.9] text-white"
           >
             {item}
           </motion.p>
@@ -43,11 +45,12 @@ export const MenuItem = ({
       ) : (
         <motion.p
           transition={{ duration: 0.3 }}
-          className={`cursor-pointer ${hoverClass} text-white`}
+          className="cursor-pointer hover:opacity-[0.9] text-white"
         >
           {item}
         </motion.p>
       )}
+      {/* Hover dropdown (desktop) */}
       {active !== null && (
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: 10 }}
@@ -61,16 +64,21 @@ export const MenuItem = ({
                 layoutId="active"
                 className="bg-[#020817] backdrop-blur-sm rounded-2xl overflow-hidden border border-white/[0.2] shadow-xl"
               >
-                <motion.div
-                  layout
-                  className="w-max h-full p-4"
-                >
+                <motion.div layout className="w-max h-full p-4">
                   {children}
                 </motion.div>
               </motion.div>
             </div>
           )}
         </motion.div>
+      )}
+      {/* Tap dropdown (touch / mobile) – shown when hover state is absent */}
+      {active === null && open && (
+        <div className="absolute top-[calc(100%_+_0.6rem)] left-1/2 transform -translate-x-1/2 pt-4 z-50">
+          <div className="bg-[#020817] backdrop-blur-sm rounded-2xl overflow-hidden border border-white/[0.2] shadow-xl">
+            <div className="w-max h-full p-4">{children}</div>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -2,6 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Mobile / iOS Safari fixes ─────────────────────────────── */
+html {
+  /* Fill the visible viewport on iOS Safari (dynamic toolbar) */
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: 100vh;
+  /* Fallback for older iOS */
+  min-height: -webkit-fill-available;
+  /* Smooth momentum-based scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent double-tap zoom on interactive elements */
+  touch-action: manipulation;
+}
+
+/* Make full-screen containers use the dynamic viewport height so
+   that they don't get clipped by Safari's collapsible address bar */
+.h-screen {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Safe-area padding for iPhone notch / Dynamic Island / home bar */
+.safe-top    { padding-top:    env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+.safe-x      { padding-left:   env(safe-area-inset-left);
+               padding-right:  env(safe-area-inset-right); }
+
+/* Prevent tap highlight on interactive elements */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @layer base {
   :root {
     /* --background: 0 0% 100%;

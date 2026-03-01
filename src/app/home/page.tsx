@@ -43,12 +43,13 @@ export default function Home() {
     };
 
     const handleTouchMove = (event: TouchEvent) => {
+      event.preventDefault();
       handleScroll(event);
     };
 
     window.addEventListener("wheel", handleScroll);
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleTouchMove, { passive: false });
 
     return () => {
       window.removeEventListener("wheel", handleScroll);
@@ -68,16 +69,22 @@ export default function Home() {
     <div className="relative overflow-hidden h-screen">
       <div className="fixed top-1/2 left-4 transform -translate-y-1/2 z-50">
         {sections.map((section, index) => (
-          <div key={section} className="relative mb-2">
+          <div
+            key={section}
+            className="relative mb-2 flex items-center"
+            onClick={() => handleClick(index)}
+          >
+            {/* Larger invisible touch target (min 44×44 px) */}
+            <div className="flex items-center justify-center w-11 h-11 cursor-pointer">
+              <motion.div
+                className={`w-3 h-3 rounded-full ${
+                  activeSection === index ? "bg-teal-400" : "bg-gray-800"
+                }`}
+                whileHover={{ scale: 1.2 }}
+              />
+            </div>
             <motion.div
-              className={`w-3 h-3 rounded-full ${
-                activeSection === index ? "bg-teal-400" : "bg-gray-800"
-              }`}
-              whileHover={{ scale: 1.2 }}
-              onClick={() => handleClick(index)}
-            />
-            <motion.div
-              className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0"
+              className="absolute left-11 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 pointer-events-none"
               whileHover={{ opacity: 1 }}
             >
               {section}
