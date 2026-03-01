@@ -44,7 +44,7 @@ const About = () => {
               We are innovators, problem-solvers, and future-shapers. Our mission is simple yet powerful: <span className="text-teal-400 font-semibold">Innovate. Evolve. Transform.</span>
             </p>
             <p className="text-gray-400">
-              We specialize in delivering technology that doesn't just meet today's challenges, but anticipates tomorrow's opportunities. From startups to enterprises, we unlock your full potential through customized, scalable, and forward-thinking digital solutions.
+              We specialize in delivering technology that doesn&apos;t just meet today&apos;s challenges, but anticipates tomorrow&apos;s opportunities. From startups to enterprises, we unlock your full potential through customized, scalable, and forward-thinking digital solutions.
             </p>
           </div>
 
@@ -87,7 +87,7 @@ const About = () => {
             className="pt-8 border-t border-gray-700"
           >
             <p className="text-xl text-gray-300 italic">
-              "Don't just adapt to the future. <span className="text-teal-400 font-semibold">Build it.</span>"
+              &ldquo;Don&apos;t just adapt to the future. <span className="text-teal-400 font-semibold">Build it.</span>&rdquo;
             </p>
             <p className="text-gray-400 mt-4">
               We engineer tomorrow's edge. We deliver scalable, intelligent tech that turns your biggest challenges into your greatest competitive advantages.
