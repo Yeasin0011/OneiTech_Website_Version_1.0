@@ -2,7 +2,16 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import Image from "next/image";
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
+import aftab from "@/clients/aftab.jpeg";
+import bup from "@/clients/bup.png";
+import eagles from "@/clients/eagles.jpeg";
+import goldenHarvest from "@/clients/Goldenharvest.jpg";
+import gs from "@/clients/gs.jpeg";
+import hellenic from "@/clients/hellenic.webp";
+import rokomari from "@/clients/rokomari.jpeg";
+import ugi from "@/clients/ugi.jpeg";
 
 const Clients = () => {
   const { ref, isIntersecting } = useIntersectionObserver();
@@ -17,39 +26,30 @@ const Clients = () => {
   }, [isIntersecting]);
 
   const clients = [
-    {
-      name: "[Client Name 1]",
-      logo: "[Logo Placeholder 1]",
-    },
-    {
-      name: "[Client Name 2]",
-      logo: "[Logo Placeholder 2]",
-    },
-    {
-      name: "[Client Name 3]",
-      logo: "[Logo Placeholder 3]",
-    },
-    {
-      name: "[Client Name 4]",
-      logo: "[Logo Placeholder 4]",
-    },
-    {
-      name: "[Client Name 5]",
-      logo: "[Logo Placeholder 5]",
-    },
-    {
-      name: "[Client Name 6]",
-      logo: "[Logo Placeholder 6]",
-    },
-    {
-      name: "[Client Name 7]",
-      logo: "[Logo Placeholder 7]",
-    },
-    {
-      name: "[Client Name 8]",
-      logo: "[Logo Placeholder 8]",
-    },
+    { name: "Aftab", logo: aftab },
+    { name: "BUP", logo: bup },
+    { name: "The Eagles Company", logo: eagles },
+    { name: "Golden Harvest", logo: goldenHarvest },
+    { name: "Grey Stone PVT", logo: gs },
+    { name: "Hellenic Group", logo: hellenic },
+    { name: "Rokomari Knit Design", logo: rokomari },
+    { name: "UGI", logo: ugi },
   ];
+
+  const carouselItems = clients.map((client) => ({
+    quote: (
+      <div className="flex min-h-[100px] items-center justify-center">
+        <Image
+          src={client.logo}
+          alt={`${client.name} logo`}
+          className="h-16 w-auto object-contain sm:h-20"
+          priority={false}
+        />
+      </div>
+    ),
+    name: client.name,
+    title: "",
+  }));
 
   return (
     <div
@@ -68,19 +68,16 @@ const Clients = () => {
         className="w-full"
       >
         <h2 className="text-4xl font-bold mb-4 text-center">Our Clients</h2>
-        <p className="text-lg text-center mb-12 px-6">
-          [Placeholder: Brief description about the types of clients you work with and the industries you serve.]
+        <p className="text-lg text-center mb-12 px-6 text-gray-300">
+          Trusted by organizations across education, retail, logistics, and enterprise services.
         </p>
 
         <div className="w-full">
           <InfiniteMovingCards
-            items={clients.map((client) => ({
-              quote: client.logo,
-              name: client.name,
-              title: "Client Logo",
-            }))}
+            items={carouselItems}
             direction="right"
             speed="slow"
+            className="mx-auto"
           />
         </div>
       </motion.div>

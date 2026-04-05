@@ -5,21 +5,23 @@ export const useIntersectionObserver = () => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
+    const target = ref.current;
+    if (!target) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsIntersecting(entry.isIntersecting);
       },
-      { threshold: 0.5 } // Adjust the threshold as needed
+      {
+        // Lower threshold improves reliability on small/mobile viewports.
+        threshold: 0.15,
+      }
     );
 
-    observer.observe(ref.current);
+    observer.observe(target);
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.unobserve(target);
     };
   }, [ref]);
 

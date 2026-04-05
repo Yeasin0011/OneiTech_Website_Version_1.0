@@ -8,13 +8,27 @@ import { NavbarMenu } from "@/components/Navbar";
 
 /* ── Mobile layout: plain scrollable page ───────────────────── */
 function MobileAbout() {
+  useEffect(() => {
+    // Reset to the first section when switching from desktop hash-based navigation.
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    if (window.location.hash) {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       <NavbarMenu />
       <div className="pt-14">
-        <About />
-        <Team />
-        <Clients />
+        <section id="about">
+          <About />
+        </section>
+        <section id="team">
+          <Team />
+        </section>
+        <section id="clients">
+          <Clients />
+        </section>
       </div>
     </div>
   );

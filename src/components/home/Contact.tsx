@@ -12,6 +12,7 @@ const Contact = () => {
     email: "",
     subject: "",
     message: "",
+    website: "",
   });
   const [submissionState, setSubmissionState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -38,18 +39,28 @@ const Contact = () => {
     setSubmissionState("loading");
     
     try {
-      // Here you would typically send the data to your backend
-      // For now, we'll simulate a delay
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result?.message || "Failed to send message. Please try again.");
+      }
       
       setSubmissionState("success");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", subject: "", message: "", website: "" });
       
       // Reset success state after 4 seconds
       setTimeout(() => setSubmissionState("idle"), 4000);
     } catch (error) {
       setSubmissionState("error");
-      setErrorMessage("Failed to send message. Please try again.");
+      setErrorMessage(error instanceof Error ? error.message : "Failed to send message. Please try again.");
       setTimeout(() => setSubmissionState("idle"), 4000);
     }
   };
@@ -201,6 +212,20 @@ const Contact = () => {
                 placeholder="Your message here..."
                 rows={6}
                 className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-teal-400 transition resize-none"
+              />
+            </div>
+
+            {/* Honeypot field for bots */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="website">Website</label>
+              <input
+                type="text"
+                id="website"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.website}
+                onChange={handleInputChange}
               />
             </div>
 
