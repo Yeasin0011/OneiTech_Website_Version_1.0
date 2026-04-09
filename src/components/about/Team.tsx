@@ -8,6 +8,8 @@ import OheePhoto from "@/teamphotos/Ohee.jpeg";
 import ZamanPhoto from "@/teamphotos/Zaman.jpeg";
 import SadiaPhoto from "@/teamphotos/Sadia.jpeg";
 import YeasinPhoto from "@/teamphotos/Yeasin.jpeg";
+import NizamPhoto from "@/teamphotos/Nizam.jpeg";
+import AdnanPhoto from "@/teamphotos/Adnan.jpeg";
 
 type TeamMember = {
   id: number;
@@ -33,7 +35,7 @@ const Team = () => {
     {
       id: 4,
       name: "Minhazur Rahman",
-      role: "Operations Manager",
+      role: "Operation Management Executive",
       image: MinhazPhoto,
       bio: "Minhaz leads operations with strong ownership, helping the team deliver consistent quality for every client engagement.",
     },
@@ -53,7 +55,7 @@ const Team = () => {
     },
     {
       id: 5,
-      name: "Sadia",
+      name: "Sadia Shemu",
       role: "Account and Finance",
       image: SadiaPhoto,
       bio: "Sadia maintains financial clarity and accountability, supporting smooth collaboration across teams and clients.",
@@ -62,14 +64,14 @@ const Team = () => {
       id: 6,
       name: "Ahmad Adnan",
       role: "Senior Developer",
-      image: "A",
+      image: AdnanPhoto,
       bio: "Adnan builds dependable solutions with clean engineering practices and a strong focus on delivery quality.",
     },
     {
       id: 1,
       name: "Nizam Uddin Ahmed",
       role: "Chief Advisor",
-      image: "N",
+      image: NizamPhoto,
       bio: "Nizam provides strategic guidance that strengthens ownership, execution, and sustainable project outcomes.",
     },
     {

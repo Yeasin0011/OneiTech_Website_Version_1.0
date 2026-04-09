@@ -9,9 +9,12 @@ import bup from "@/clients/bup.png";
 import eagles from "@/clients/eagles.jpeg";
 import goldenHarvest from "@/clients/Goldenharvest.jpg";
 import gs from "@/clients/gs.jpeg";
-import hellenic from "@/clients/hellenic.webp";
+import hellenic from "@/clients/Hellenic.jpeg";
 import rokomari from "@/clients/rokomari.jpeg";
 import ugi from "@/clients/ugi.jpeg";
+import NSU from "@/clients/NSU.jpeg";
+import Expo from "@/clients/Expo.jpeg";
+import RCL from "@/clients/RCL.jpeg";
 
 const Clients = () => {
   const { ref, isIntersecting } = useIntersectionObserver();
@@ -26,23 +29,27 @@ const Clients = () => {
   }, [isIntersecting]);
 
   const clients = [
-    { name: "Aftab", logo: aftab },
-    { name: "BUP", logo: bup },
+    { name: "Aftab Group", logo: aftab },
+    { name: "Bangladesh University of Professionals", logo: bup },
     { name: "The Eagles Company", logo: eagles },
     { name: "Golden Harvest", logo: goldenHarvest },
     { name: "Grey Stone PVT", logo: gs },
     { name: "Hellenic Group", logo: hellenic },
     { name: "Rokomari Knit Design", logo: rokomari },
-    { name: "UGI", logo: ugi },
+    { name: "Uttara Group of Industries", logo: ugi },
+    { name: "North South University", logo: NSU },
+    { name: "Expo Bangla", logo: Expo },
+    { name: "Rider Cargo Limited", logo: RCL },
+    
   ];
 
   const carouselItems = clients.map((client) => ({
     quote: (
-      <div className="flex min-h-[100px] items-center justify-center">
+      <div className="flex min-h-[150px] items-center justify-center">
         <Image
           src={client.logo}
           alt={`${client.name} logo`}
-          className="h-16 w-auto object-contain sm:h-20"
+          className="h-24 w-auto object-contain sm:h-28 md:h-32"
           priority={false}
         />
       </div>

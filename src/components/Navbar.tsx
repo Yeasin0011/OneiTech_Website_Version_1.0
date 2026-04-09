@@ -27,10 +27,8 @@ function DesktopNavbar({ className }: { className?: string }) {
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/services/software-dev-and-erp-solution">Software Development and ERP Solution</HoveredLink>
               <HoveredLink href="/services/network-solutions">Network Solutions</HoveredLink>
-              <HoveredLink href="/services/backup-and-disaster-recovery">Backup and Disaster Recovery</HoveredLink>
               <HoveredLink href="/services/marketing-consultancy">Marketing Consultancy</HoveredLink>
               <HoveredLink href="/services/cloud-onboarding-services">Cloud Onboarding/Services</HoveredLink>
-              <HoveredLink href="/services/cyber-security">Cyber Security</HoveredLink>
             </div>
           </div>
         </MenuItem>
@@ -42,12 +40,8 @@ function DesktopNavbar({ className }: { className?: string }) {
               <HoveredLink href="/seo">Accounting</HoveredLink>
             </div>
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Fixed Asset MGT</HoveredLink>
-              <HoveredLink href="/interface-design">Provident Fund MGT</HoveredLink>
               <HoveredLink href="/seo">Hospital MGT</HoveredLink>
               <HoveredLink href="/branding">CRM</HoveredLink>
-              <HoveredLink href="/branding">Vat MGT</HoveredLink>
-              <HoveredLink href="/branding">Income Tax Return MGT</HoveredLink>
             </div>
           </div>
         </MenuItem>
@@ -113,10 +107,8 @@ function MobileNavbar() {
                   <Link href="/services" onClick={close} className="hover:text-teal-400 transition-colors">All Services</Link>
                   <Link href="/services/software-dev-and-erp-solution" onClick={close} className="hover:text-teal-400 transition-colors">Software Dev & ERP Solution</Link>
                   <Link href="/services/network-solutions" onClick={close} className="hover:text-teal-400 transition-colors">Network Solutions</Link>
-                  <Link href="/services/backup-and-disaster-recovery" onClick={close} className="hover:text-teal-400 transition-colors">Backup & Disaster Recovery</Link>
                   <Link href="/services/marketing-consultancy" onClick={close} className="hover:text-teal-400 transition-colors">Marketing Consultancy</Link>
                   <Link href="/services/cloud-onboarding-services" onClick={close} className="hover:text-teal-400 transition-colors">Cloud Onboarding/Services</Link>
-                  <Link href="/services/cyber-security" onClick={close} className="hover:text-teal-400 transition-colors">Cyber Security</Link>
                 </div>
               )}
             </div>
@@ -137,12 +129,8 @@ function MobileNavbar() {
                   <Link href="/web-dev" onClick={close} className="hover:text-teal-400 transition-colors">Freight Management</Link>
                   <Link href="/interface-design" onClick={close} className="hover:text-teal-400 transition-colors">HRM</Link>
                   <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Accounting</Link>
-                  <Link href="/web-dev" onClick={close} className="hover:text-teal-400 transition-colors">Fixed Asset MGT</Link>
-                  <Link href="/interface-design" onClick={close} className="hover:text-teal-400 transition-colors">Provident Fund MGT</Link>
                   <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Hospital MGT</Link>
                   <Link href="/branding" onClick={close} className="hover:text-teal-400 transition-colors">CRM</Link>
-                  <Link href="/branding" onClick={close} className="hover:text-teal-400 transition-colors">Vat MGT</Link>
-                  <Link href="/branding" onClick={close} className="hover:text-teal-400 transition-colors">Income Tax Return MGT</Link>
                 </div>
               )}
             </div>
