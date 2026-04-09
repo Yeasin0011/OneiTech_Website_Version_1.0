@@ -23,24 +23,24 @@ const projects = [
         link: "/services/network-solutions",
         details: "Our network solutions provide a reliable and secure infrastructure tailored to your business needs. From design and implementation to maintenance, we ensure your network operates at peak efficiency, enabling seamless communication and connectivity across your organization."
       },
-      {
-        title: "Cyber Security",
-        description: "Protecting your digital assets with advanced cybersecurity measures.",
-        link: "/services/cyber-security",
-        details: "We offer comprehensive cybersecurity solutions to protect your business from digital threats. Our services include threat detection, risk assessment, and the implementation of robust security measures to safeguard your data and ensure compliance with industry standards."
-      },
+      // {
+      //   title: "Cyber Security",
+      //   description: "Protecting your digital assets with advanced cybersecurity measures.",
+      //   link: "/services/cyber-security",
+      //   details: "We offer comprehensive cybersecurity solutions to protect your business from digital threats. Our services include threat detection, risk assessment, and the implementation of robust security measures to safeguard your data and ensure compliance with industry standards."
+      // },
       {
         title: "Automation and IOT",
         description: "Implementing smart automation and IoT solutions for enhanced efficiency.",
         link: "/services/automation-and-iot",
         details: "Our automation and IoT services are designed to streamline your operations and increase efficiency. By integrating smart devices and automated systems, we help you monitor and control your business processes in real-time, leading to improved productivity and reduced operational costs."
       },
-      {
-        title: "Backup and Disaster Recovery",
-        description: "Ensuring data safety with robust backup and disaster recovery solutions.",
-        link: "/services/backup-and-disaster-recovery",
-        details: "Our backup and disaster recovery services ensure your critical data is protected and can be restored quickly in the event of a disruption. We offer scalable backup solutions and disaster recovery planning to minimize downtime and ensure business continuity."
-      },
+      // {
+      //   title: "Backup and Disaster Recovery",
+      //   description: "Ensuring data safety with robust backup and disaster recovery solutions.",
+      //   link: "/services/backup-and-disaster-recovery",
+      //   details: "Our backup and disaster recovery services ensure your critical data is protected and can be restored quickly in the event of a disruption. We offer scalable backup solutions and disaster recovery planning to minimize downtime and ensure business continuity."
+      // },
       {
         title: "UI/UX Design",
         description: "Crafting intuitive and engaging user interfaces and experiences.",
@@ -65,12 +65,12 @@ const projects = [
         link: "/services/end-user-workplace-support",
         details: "We provide end-user workplace support to ensure your employees have the tools and assistance they need to work efficiently. Our services include IT support, software troubleshooting, and training, all aimed at minimizing disruptions and maximizing productivity."
       },
-      {
-        title: "AI and Machine Learning",
-        description: "Harnessing the power of AI and machine learning for innovative solutions.",
-        link: "/services/ai-and-machine-learning",
-        details: "Our AI and machine learning services help you leverage advanced technologies to drive innovation. We offer solutions that include predictive analytics, natural language processing, and automation, enabling you to make data-driven decisions and optimize your business processes."
-      },
+      // {
+      //   title: "AI and Machine Learning",
+      //   description: "Harnessing the power of AI and machine learning for innovative solutions.",
+      //   link: "/services/ai-and-machine-learning",
+      //   details: "Our AI and machine learning services help you leverage advanced technologies to drive innovation. We offer solutions that include predictive analytics, natural language processing, and automation, enabling you to make data-driven decisions and optimize your business processes."
+      // },
   ];
   
   export default projects;

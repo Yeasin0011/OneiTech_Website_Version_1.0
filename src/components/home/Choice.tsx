@@ -13,54 +13,54 @@ import {
 export function Choice() {
   const features = [
     {
-      title: "Built for developers",
+      title: "Engineered Expertise",
       description:
-        "Built for engineers, developers, dreamers, thinkers and doers.",
+        "Solutions architected by experienced engineers to deliver reliability, scalability, and long-term value.",
       icon: <IconTerminal2 />,
     },
     {
-      title: "Ease of use",
+      title: "Intuitive Experience",
       description:
-        "It's as easy as using an Apple, and as expensive as buying one.",
+        "User-first design that keeps workflows clear, efficient, and easy to adopt across teams.",
       icon: <IconEaseInOut />,
     },
     {
-      title: "Pricing like no other",
+      title: "Transparent Pricing",
       description:
-        "Our prices are best in the market. No cap, no lock, no credit card required.",
+        "Clear and competitive pricing with no hidden conditions, helping you plan with confidence.",
       icon: <IconCurrencyDollar />,
     },
     {
-      title: "100% Uptime guarantee",
-      description: "We just cannot be taken down by anyone.",
+      title: "Reliable Availability",
+      description: "Stable infrastructure and proactive monitoring to keep your business running without interruption.",
       icon: <IconCloud />,
     },
     {
-      title: "Multi-tenant Architecture",
-      description: "You can simply share passwords instead of buying new seats",
+      title: "Scalable Architecture",
+      description: "Modern system design that grows with your organization while maintaining performance and security.",
       icon: <IconRouteAltLeft />,
     },
     {
-      title: "24/7 Customer Support",
+      title: "Responsive Support",
       description:
-        "We are available a 100% of the time. Atleast our AI Agents are.",
+        "Dedicated support and timely assistance to resolve issues quickly and keep operations smooth.",
       icon: <IconHelp />,
     },
     {
-      title: "Money back guarantee",
+      title: "Quality Commitment",
       description:
-        "If you donot like EveryAI, we will convince you to like us.",
+        "Every engagement is guided by measurable outcomes, high standards, and accountable delivery.",
       icon: <IconAdjustmentsBolt />,
     },
     {
-      title: "And everything else",
-      description: "I just ran out of copy ideas. Accept my sincere apologies",
+      title: "Trusted Partnership",
+      description: "We collaborate closely with your team to build practical solutions aligned with your goals.",
       icon: <IconHeart />,
     },
   ];
   return (
     <div className="py-4 mx-4 sm:mx-8 md:mx-16">
-        <h2 className="text-2xl sm:text-3xl font-semibold">Why choose us</h2>
+        <h2 className="text-2xl sm:text-3xl font-semibold">Why Choose Us</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 relative z-10 py-2 sm:py-4 md:py-10 max-w-7xl mx-auto">
         {features.map((feature, index) => (
             <Feature key={feature.title} {...feature} index={index} />

@@ -41,16 +41,7 @@ export const software = [
     title: "Event MGT",
   },
   {
-    title: "Site Engineer Remote MGT",
-  },
-  {
-    title: "Tele Medicine",
-  },
-  {
     title: "Fixed Asset MGT",
-  },
-  {
-    title: "Provident Fund MGT",
   },
   {
     title: "Hospital MGT",
@@ -60,8 +51,5 @@ export const software = [
   },
   {
     title: "VAT MGT",
-  },
-  {
-    title: "Income Tax Return MGT",
   },
 ];
