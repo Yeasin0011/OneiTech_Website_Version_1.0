@@ -35,7 +35,7 @@ function DesktopNavbar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="Products">
           <div className="flex gap-4">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Freight Management</HoveredLink>
+              <HoveredLink href="/services/freight-management">Freight Management</HoveredLink>
               <HoveredLink href="/interface-design">HRM</HoveredLink>
               <HoveredLink href="/seo">Accounting</HoveredLink>
             </div>
@@ -126,7 +126,7 @@ function MobileNavbar() {
               </button>
               {productsOpen && (
                 <div className="flex flex-col gap-3 pb-4 pl-3 text-sm text-gray-300">
-                  <Link href="/web-dev" onClick={close} className="hover:text-teal-400 transition-colors">Freight Management</Link>
+                  <Link href="/services/freight-management" onClick={close} className="hover:text-teal-400 transition-colors">Freight Management</Link>
                   <Link href="/interface-design" onClick={close} className="hover:text-teal-400 transition-colors">HRM</Link>
                   <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Accounting</Link>
                   <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Hospital MGT</Link>
