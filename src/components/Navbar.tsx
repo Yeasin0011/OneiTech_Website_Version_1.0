@@ -36,6 +36,7 @@ function DesktopNavbar({ className }: { className?: string }) {
           <div className="flex gap-4">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/services/freight-management">Freight Management</HoveredLink>
+              <HoveredLink href="/services/oneicore-erp-solution">OneiCore ERP Solution</HoveredLink>
               <HoveredLink href="/interface-design">HRM</HoveredLink>
               <HoveredLink href="/seo">Accounting</HoveredLink>
             </div>
@@ -127,6 +128,7 @@ function MobileNavbar() {
               {productsOpen && (
                 <div className="flex flex-col gap-3 pb-4 pl-3 text-sm text-gray-300">
                   <Link href="/services/freight-management" onClick={close} className="hover:text-teal-400 transition-colors">Freight Management</Link>
+                  <Link href="/services/oneicore-erp-solution" onClick={close} className="hover:text-teal-400 transition-colors">OneiCore ERP Solution</Link>
                   <Link href="/interface-design" onClick={close} className="hover:text-teal-400 transition-colors">HRM</Link>
                   <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Accounting</Link>
                   <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Hospital MGT</Link>

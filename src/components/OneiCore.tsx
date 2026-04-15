@@ -3,59 +3,55 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-import bookingImage from '@/OneiFreight/booking.jpeg';
-import dashboardImage from '@/OneiFreight/dashboard.jpeg';
-import analyticalDashboardImage from '@/OneiFreight/analyticaldashboard.jpeg';
-import realTimeTrackingImage from '@/OneiFreight/realtimetracking.jpeg';
-import courierTrackingImage from '@/OneiFreight/couriertracking.jpeg';
+import dashboardImage from '@/OneiCore/Dashboard.jpeg';
+import purchaseEntryImage from '@/OneiCore/purchaseentry.jpeg';
+import reportImage from '@/OneiCore/report .jpeg';
+import salesInvoiceImage from '@/OneiCore/salesinvoice.jpeg';
+import warehouseInfoImage from '@/OneiCore/warehouseinfo.jpeg';
 
 interface ImageItem {
   id: number;
   title: string;
   description: string;
-  image: typeof bookingImage;
+  image: typeof dashboardImage;
 }
 
-const FreightManagement: React.FC = () => {
+const OneiCore: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [carouselIndex, setCarouselIndex] = useState(0);
 
   const imageItems: ImageItem[] = [
     {
       id: 1,
-      title: 'Booking',
-      description: 'Booking workflow for freight shipments and operational intake',
-      image: bookingImage,
-    },
-    {
-      id: 2,
       title: 'Dashboard',
-      description: 'Main dashboard for monitoring freight operations at a glance',
+      description: 'Unified overview of finance, operations, and business performance KPIs.',
       image: dashboardImage,
     },
     {
+      id: 2,
+      title: 'Purchase Entry',
+      description: 'Streamlined procurement entry with vendor, item, and approval workflow control.',
+      image: purchaseEntryImage,
+    },
+    {
       id: 3,
-      title: 'Analytical Dashboard',
-      description: 'Analytics view for tracking performance and shipment insights',
-      image: analyticalDashboardImage,
+      title: 'Report',
+      description: 'Real-time reporting for decision-ready insights across departments and processes.',
+      image: reportImage,
     },
     {
       id: 4,
-      title: 'Real-Time Tracking',
-      description: 'Live shipment tracking with active status updates',
-      image: realTimeTrackingImage,
+      title: 'Sales Invoice',
+      description: 'Automated invoicing with accurate tax, customer, and payment tracking details.',
+      image: salesInvoiceImage,
     },
     {
       id: 5,
-      title: 'Courier Tracking',
-      description: 'Courier tracking view for delivery visibility and milestone updates',
-      image: courierTrackingImage,
+      title: 'Warehouse Info',
+      description: 'Granular inventory and warehouse visibility to optimize stock and fulfillment.',
+      image: warehouseInfoImage,
     },
   ];
-
-  const handleImageClick = (id: number) => {
-    setSelectedImage(id);
-  };
 
   const closeModal = () => {
     setSelectedImage(null);
@@ -72,14 +68,14 @@ const FreightManagement: React.FC = () => {
   return (
     <div className="min-h-screen bg-black/50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        {/* OneiFreight Section */}
         <div className="mb-20">
-          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-12 text-center">
-            Revolutionize Your Logistics Operations with{' '}
-            <span className="text-cyan-400">OneiFreight</span>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4 text-center">
+            <span className="text-cyan-400">OneiCore</span>
           </h1>
+          <p className="text-lg text-gray-300 mb-12 text-center">
+            Deploy Enterprise-Grade Resource Planning with OneiCore
+          </p>
 
-          {/* Carousel - Image Carousel */}
           <div className="mb-16">
             <div className="relative h-80 sm:h-96 md:h-[28rem] rounded-lg overflow-hidden border border-blue-500/50">
               <Image
@@ -99,7 +95,6 @@ const FreightManagement: React.FC = () => {
                 </p>
               </div>
 
-              {/* Navigation Buttons */}
               <button
                 onClick={prevImage}
                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-blue-600/80 hover:bg-blue-600 text-white p-2 rounded-full transition-colors z-10"
@@ -117,7 +112,6 @@ const FreightManagement: React.FC = () => {
                 </svg>
               </button>
 
-              {/* Indicators */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {imageItems.map((_, index) => (
                   <button
@@ -134,115 +128,112 @@ const FreightManagement: React.FC = () => {
 
           <div className="space-y-8 text-gray-200 leading-relaxed">
             <p className="text-lg">
-              Redefine the boundaries of freight forwarding with Bangladesh's most sophisticated logistics automation platform, a high-performance, unified suite engineered to harmonize complex supply chains, optimize asset utilization, and deliver impeccable service at scale.
+              Unify your entire business architecture with OneiCore Bangladesh&apos;s premier, high-agility ERP ecosystem designed to streamline complex workflows, centralize disparate data, and empower organizations with the same modular flexibility found in global leaders like Odoo.
             </p>
 
             <p className="text-lg">
-              Accelerate your operational evolution with OneiFreight's elite logistics delivery framework. Purpose-built to empower modern forwarders, our platform is the strategic choice for industry leaders looking to bypass traditional technical debt and deploy a future-ready digital infrastructure in record time.
+              Accelerate your organizational maturity with OneiCore&apos;s proven enterprise delivery framework. Engineered to bridge the gap between operational silos, our platform enables SMEs and large enterprises alike to launch comprehensive digital departments in record time, lowering total cost of ownership while maximizing cross-functional efficiency.
             </p>
 
-            <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/50 rounded-lg p-8">
+            <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 border border-purple-500/50 rounded-lg p-8">
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-8">
-                The OneiFreight Advantage: Precision, Performance, Power
+                The OneiCore Advantage: Modular, Scalable, Sovereign
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-blue-300">Integrated Multi-Modal Architecture</h3>
+                  <h3 className="text-lg font-semibold text-purple-300">Universal Modular Architecture</h3>
                   <p className="text-gray-300">
-                    Seamlessly manage Ocean and Air freight through a single "source of truth." Our platform synchronizes booking, drayage, and warehousing into a fluid, automated pipeline.
+                    Scale your digital footprint at your own pace. From CRM and HRMS to Inventory and Manufacturing, OneiCore offers a fully integrated suite of apps that grow alongside your business requirements.
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-blue-300">Automated Financial Governance</h3>
+                  <h3 className="text-lg font-semibold text-purple-300">Centralized Financial Intelligence</h3>
                   <p className="text-gray-300">
-                    Bridge the gap between operations and finance with built-in multi-currency accounting, automated billing, and real-time profit-and-loss visibility at the individual shipment level.
+                    Achieve a 360-degree view of your fiscal health. OneiCore automates complex accounting tasks, provides real-time multi-dimensional reporting, and ensures your ledgers are always audit-ready.
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-blue-300">Streamlined Documentation Engine</h3>
+                  <h3 className="text-lg font-semibold text-purple-300">Precision Supply Chain Management</h3>
                   <p className="text-gray-300">
-                    Eliminate manual entry errors with automated document generation. Instantly produce HAWBs, House Bill of Ladings, and Manifests that comply with evolving international trade standards.
+                    Master your logistics from procurement to fulfillment. Our intelligent inventory engine optimizes stock levels, automates reordering, and provides granular visibility across multiple warehouses.
                   </p>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-blue-300">Hyper-Localized, Globally Scalable</h3>
+                  <h3 className="text-lg font-semibold text-purple-300">Engineered for Local Excellence</h3>
                   <p className="text-gray-300">
-                    Leveraging the technical ingenuity of Bangladesh's premier developers, OneiFreight offers the robust security of an enterprise ERP with the agility of a cloud-native SaaS.
+                    Developed by Bangladesh&apos;s top-tier architects, OneiCore combines global ERP best practices with deep localized functionality ensuring compliance with local tax laws, labor regulations, and business cultures.
                   </p>
                 </div>
 
                 <div className="col-span-1 sm:col-span-2">
-                  <h3 className="text-lg font-semibold text-blue-300">Real-Time Stakeholder Transparency</h3>
+                  <h3 className="text-lg font-semibold text-purple-300">Seamless Third-Party Connectivity</h3>
                   <p className="text-gray-300">
-                    Elevate your customer experience with branded tracking portals and automated milestone alerts, ensuring your clients are never left in the dark.
+                    Break down digital barriers with a robust API framework that connects your ERP to existing legacy systems, e-commerce platforms, and external financial gateways.
                   </p>
                 </div>
               </div>
             </div>
 
-            {/* Table - OneiFreight Benefits */}
             <div className="mt-12 overflow-x-auto">
-              <h3 className="text-2xl font-semibold text-white mb-6 text-center">Engineering Growth for the Modern Forwarder</h3>
+              <h3 className="text-2xl font-semibold text-white mb-6 text-center">Driving Efficiency Across the Enterprise</h3>
               <table className="w-full border-collapse">
                 <thead>
-                  <tr className="bg-blue-900/30 border border-blue-500/50">
-                    <th className="px-6 py-4 text-left text-lg font-semibold text-blue-300 border border-blue-500/30">
-                      Feature
+                  <tr className="bg-purple-900/30 border border-purple-500/50">
+                    <th className="px-6 py-4 text-left text-lg font-semibold text-purple-300 border border-purple-500/30">
+                      Capability
                     </th>
-                    <th className="px-6 py-4 text-left text-lg font-semibold text-blue-300 border border-blue-500/30">
-                      Strategic Impact
+                    <th className="px-6 py-4 text-left text-lg font-semibold text-purple-300 border border-purple-500/30">
+                      Strategic Value
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border border-blue-500/30 hover:bg-blue-900/20 transition-colors">
-                    <td className="px-6 py-4 text-gray-300 font-semibold border border-blue-500/30">
-                      Rapid Go-Live
+                  <tr className="border border-purple-500/30 hover:bg-purple-900/20 transition-colors">
+                    <td className="px-6 py-4 text-gray-300 font-semibold border border-purple-500/30">
+                      Integrated CRM
                     </td>
-                    <td className="px-6 py-4 text-gray-300 border border-blue-500/30">
-                      Transition from legacy silos to a unified digital cloud in as little as 6 weeks.
-                    </td>
-                  </tr>
-                  <tr className="border border-blue-500/30 hover:bg-blue-900/20 transition-colors">
-                    <td className="px-6 py-4 text-gray-300 font-semibold border border-blue-500/30">
-                      Cost Optimization
-                    </td>
-                    <td className="px-6 py-4 text-gray-300 border border-blue-500/30">
-                      Reduce administrative overhead by up to 40% through intelligent process automation.
+                    <td className="px-6 py-4 text-gray-300 border border-purple-500/30">
+                      Centralize lead management and sales pipelines to boost conversion rates.
                     </td>
                   </tr>
-                  <tr className="border border-blue-500/30 hover:bg-blue-900/20 transition-colors">
-                    <td className="px-6 py-4 text-gray-300 font-semibold border border-blue-500/30">
-                      Global Compliance
+                  <tr className="border border-purple-500/30 hover:bg-purple-900/20 transition-colors">
+                    <td className="px-6 py-4 text-gray-300 font-semibold border border-purple-500/30">
+                      Automated HRM
                     </td>
-                    <td className="px-6 py-4 text-gray-300 border border-blue-500/30">
-                      Stay "audit-ready" with comprehensive digital trails and automated regulatory reporting.
+                    <td className="px-6 py-4 text-gray-300 border border-purple-500/30">
+                      Streamline payroll, attendance, and employee lifecycles within a single portal.
+                    </td>
+                  </tr>
+                  <tr className="border border-purple-500/30 hover:bg-purple-900/20 transition-colors">
+                    <td className="px-6 py-4 text-gray-300 font-semibold border border-purple-500/30">
+                      Project Governance
+                    </td>
+                    <td className="px-6 py-4 text-gray-300 border border-purple-500/30">
+                      Track time, resources, and profitability for every initiative in real-time.
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <p className="text-lg text-center text-gray-200 mt-12 p-8 bg-blue-900/20 border border-blue-500/50 rounded-lg">
-              <strong>Where Logistics Meets Innovation.</strong> OneiFreight isn't just a tool; it's a competitive engine. We provide the sophisticated digital backbone that allows ambitious freight forwarders to outpace the market, turning operational complexity into a distinct strategic advantage.
+            <p className="text-lg text-center text-gray-200 mt-12 p-8 bg-purple-900/20 border border-purple-500/50 rounded-lg">
+              <strong>One System. Zero Limits.</strong> OneiCore is the definitive digital backbone for the modern enterprise. We empower you to eliminate fragmented software and consolidate your operations into a single, high-performance environment that turns raw data into actionable growth.
             </p>
           </div>
         </div>
-
       </div>
 
-      {/* Modal for Image Click */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
           onClick={closeModal}
         >
           <div
-            className="bg-gradient-to-br from-gray-900 to-black rounded-lg p-8 max-w-md w-full border border-blue-500/50"
+            className="bg-gradient-to-br from-gray-900 to-black rounded-lg p-8 max-w-md w-full border border-purple-500/50"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex justify-between items-center mb-4">
@@ -273,7 +264,7 @@ const FreightManagement: React.FC = () => {
             </p>
             <button
               onClick={closeModal}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+              className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
             >
               Learn More
             </button>
@@ -284,4 +275,4 @@ const FreightManagement: React.FC = () => {
   );
 };
 
-export default FreightManagement;
+export default OneiCore;

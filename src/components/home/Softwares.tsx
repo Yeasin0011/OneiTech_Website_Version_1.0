@@ -45,6 +45,10 @@ export const software = [
     slug: "freight-management",
   },
   {
+    title: "OneiCore ERP Solution",
+    slug: "oneicore-erp-solution",
+  },
+  {
     title: "HRM",
   },
   {
