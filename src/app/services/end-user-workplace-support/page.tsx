@@ -1,9 +1,10 @@
 import React from 'react';
+import { BackgroundBeams } from '@/components/ui/background-beams';
 
 const EndUserWorkplaceSupport: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-sky-950 to-indigo-950 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto rounded-3xl border border-cyan-400/30 bg-slate-900/80 shadow-2xl shadow-cyan-500/20 backdrop-blur p-6 sm:p-10">
+    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-950 via-sky-950 to-indigo-950 py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto relative z-10 rounded-3xl border border-cyan-400/30 bg-slate-900/80 shadow-2xl shadow-cyan-500/20 backdrop-blur p-6 sm:p-10">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-center mb-8 bg-gradient-to-r from-cyan-300 via-sky-400 to-fuchsia-400 bg-clip-text text-transparent">End User Workplace Support</h1>
 
         <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-6">
@@ -47,6 +48,7 @@ const EndUserWorkplaceSupport: React.FC = () => {
           </p>
         </div>
       </div>
+      <BackgroundBeams className="opacity-60" />
     </div>
   );
 };
