@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import Hero from "../../components/home/Hero";
 import { Services } from "../../components/home/Services";
 import Expertise from "../../components/home/Expertise";
@@ -12,14 +13,28 @@ import ContactHome from "@/components/home/ContactHome";
 import { NavbarMenu } from "@/components/Navbar";
 
 /* ── Mobile layout: plain scrollable page ───────────────────── */
-function MobileHome() {
+function MobileHome({ initialSection }: { initialSection: number }) {
+  useEffect(() => {
+    if (initialSection > 0) {
+      const targetSection = sectionNames[initialSection];
+      const target = document.getElementById(targetSection);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [initialSection]);
+
   return (
     <div className="min-h-screen w-full overflow-x-hidden">
       <NavbarMenu />
       <div className="pt-14">
         <Hero />
-        <Services />
-        <Softwares />
+        <section id="features">
+          <Services />
+        </section>
+        <section id="softwares">
+          <Softwares />
+        </section>
         <Choice />
         <Testimonial />
         <Featured />
@@ -33,12 +48,20 @@ function MobileHome() {
 /* ── Desktop layout: fullpage swipe sections ────────────────── */
 const sectionNames = ["hero", "features", "softwares", "choose", "testimonial", "featured", "expertise", "contact"] as const;
 
-function DesktopHome() {
-  const [activeSection, setActiveSection] = useState(0);
+function DesktopHome({ initialSection }: { initialSection: number }) {
+  const [activeSection, setActiveSection] = useState(initialSection);
   const [scrollDirection, setScrollDirection] = useState(1);
   const [isAnimating, setIsAnimating] = useState(false);
   const isAnimatingRef = useRef(false);
-  const activeSectionRef = useRef(0);
+  const activeSectionRef = useRef(initialSection);
+
+  useEffect(() => {
+    setActiveSection(initialSection);
+    activeSectionRef.current = initialSection;
+    setScrollDirection(1);
+    isAnimatingRef.current = false;
+    setIsAnimating(false);
+  }, [initialSection]);
 
   const navigate = (direction: number) => {
     if (isAnimatingRef.current) return;
@@ -160,6 +183,10 @@ const DesktopSectionContent: React.FC<{ name: string }> = ({ name }) => {
 export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const searchParams = useSearchParams();
+
+  const sectionParam = searchParams.get("section");
+  const initialSection = sectionParam ? Math.max(sectionNames.indexOf(sectionParam as (typeof sectionNames)[number]), 0) : 0;
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -170,5 +197,5 @@ export default function Home() {
   }, []);
 
   if (!mounted) return null;
-  return isMobile ? <MobileHome /> : <DesktopHome />;
+  return isMobile ? <MobileHome initialSection={initialSection} /> : <DesktopHome initialSection={initialSection} />;
 }
