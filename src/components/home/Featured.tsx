@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import BlurFade from "../magicui/blur-fade";
 
 const Featured = () => {
@@ -18,7 +19,7 @@ const Featured = () => {
           <h3 className="text-xl font-semibold mt-4">Web Development</h3>
           <p className="mt-2 text-gray-600">Visit to see some of our projects</p>
         </div>
-        <div className="w-full sm:w-[48%] md:w-[45%] mb-8 bg-gray-900 rounded-xl p-4 cursor-pointer">
+        <Link href="/graphics" className="w-full sm:w-[48%] md:w-[45%] mb-8 bg-gray-900 rounded-xl p-4 cursor-pointer block">
           <Image
             src="/graphic-design.jpg"
             alt="Work 2"
@@ -28,7 +29,7 @@ const Featured = () => {
           />
           <h3 className="text-xl font-semibold mt-4">Graphic Design</h3>
           <p className="mt-2 text-gray-600">Explore the creativity of our team</p>
-        </div>
+        </Link>
       </div>
       </BlurFade>
     </div>
