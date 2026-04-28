@@ -77,7 +77,7 @@ const Team = () => {
     {
       id: 7,
       name: "Yeasin Ibne Kadir",
-      role: "Developer",
+      role: "Associate Developer",
       image: YeasinPhoto,
       bio: "Yeasin supports the development team with curiosity and continuous learning, contributing to clean and reliable delivery.",
     },

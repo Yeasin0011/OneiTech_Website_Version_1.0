@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 
+const ONEI_CRM_HREF = "/branding";
+
 export function NavbarMenu() {
   return (
     <div className="relative w-full flex items-center justify-center">
@@ -27,7 +29,7 @@ function DesktopNavbar({ className }: { className?: string }) {
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/services/freight-management">OneiFreight</HoveredLink>
               <HoveredLink href="/services/oneicore-erp-solution">OneiCore</HoveredLink>
-              <HoveredLink href="/branding">OneiCRM</HoveredLink>
+              <HoveredLink href={ONEI_CRM_HREF}>OneiCRM</HoveredLink>
             </div>
           </div>
         </MenuItem>
@@ -115,7 +117,7 @@ function MobileNavbar() {
                 <div className="flex flex-col gap-3 pb-4 pl-3 text-sm text-gray-300">
                   <Link href="/services/freight-management" onClick={close} className="hover:text-teal-400 transition-colors">OneiFreight</Link>
                   <Link href="/services/oneicore-erp-solution" onClick={close} className="hover:text-teal-400 transition-colors">OneiCore</Link>
-                  <Link href="/branding" onClick={close} className="hover:text-teal-400 transition-colors">OneiCRM</Link>
+                  <Link href={ONEI_CRM_HREF} onClick={close} className="hover:text-teal-400 transition-colors">OneiCRM</Link>
                 </div>
               )}
             </div>

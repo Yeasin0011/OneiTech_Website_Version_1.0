@@ -23,7 +23,11 @@ export function Softwares() {
           );
 
           return item.slug ? (
-            <Link key={index} href={`/services/${item.slug}`} className="hover:opacity-80 transition-opacity">
+            <Link
+              key={index}
+              href={item.slug === "branding" ? "/branding" : `/services/${item.slug}`}
+              className="hover:opacity-80 transition-opacity"
+            >
               {CardContent}
             </Link>
           ) : (
@@ -50,5 +54,6 @@ export const software = [
   },
   {
     title: "OneiCRM",
+    slug: "branding",
   },
 ];

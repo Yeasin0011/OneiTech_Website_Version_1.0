@@ -4,20 +4,17 @@ import Image from "next/image";
 import { useState } from "react";
 import { NavbarMenu } from "@/components/Navbar";
 
-import graphics1 from "@/Graphics/Graphics1.jpeg";
-import graphics2 from "@/Graphics/graphics2.jpeg";
-import graphics3 from "@/Graphics/graphics3.jpeg";
-import graphics4 from "@/Graphics/graphics4.jpeg";
-import graphics5 from "@/Graphics/graphics5.jpeg";
-import graphics7 from "@/Graphics/graphics7.jpeg";
+import web1 from "@/Web/web1.jpeg";
+import web2 from "@/Web/web2.jpeg";
+import web3 from "@/Web/web3.jpeg";
 
-const graphicsImages = [graphics1, graphics2, graphics3, graphics4, graphics5, graphics7];
+const webImages = [web1, web2, web3];
 
-export default function GraphicsPage() {
+export default function WebPage() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const paginate = (nextDirection: number) => {
-    setActiveIndex((prevIndex) => (prevIndex + nextDirection + graphicsImages.length) % graphicsImages.length);
+  const paginate = (direction: number) => {
+    setActiveIndex((prevIndex) => (prevIndex + direction + webImages.length) % webImages.length);
   };
 
   return (
@@ -28,15 +25,16 @@ export default function GraphicsPage() {
           <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.12),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(56,189,248,0.10),transparent_28%)]" />
           <div className="pointer-events-none absolute left-[10%] top-[14%] h-40 w-40 rounded-full bg-cyan-400/8 blur-3xl" />
           <div className="pointer-events-none absolute right-[8%] bottom-[14%] h-48 w-48 rounded-full bg-sky-400/8 blur-3xl" />
+
           <div
             className="relative z-10 flex h-full w-full transition-transform duration-500 ease-in-out"
             style={{ transform: `translateX(-${activeIndex * 100}%)` }}
           >
-            {graphicsImages.map((image, index) => (
+            {webImages.map((image, index) => (
               <div key={`${image.src}-${index}`} className="relative h-full min-w-full">
                 <Image
                   src={image}
-                  alt={`Graphic ${index + 1}`}
+                  alt={`Web Design ${index + 1}`}
                   fill
                   priority={index < 2}
                   className="object-contain p-3 sm:p-4 lg:p-6"
