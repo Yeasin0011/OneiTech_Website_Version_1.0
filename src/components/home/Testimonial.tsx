@@ -1,12 +1,32 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { InfiniteMovingCards } from "../ui/infinite-moving-cards";
+import aftab from "@/clients/aftab.jpeg";
+import bup from "@/clients/bup.png";
+import eagles from "@/clients/eagles.jpeg";
+import goldenHarvest from "@/clients/Goldenharvest.jpg";
+import gs from "@/clients/gs.jpeg";
+import hellenic from "@/clients/Hellenic.jpeg";
+import rokomari from "@/clients/rokomari.jpeg";
+import ugi from "@/clients/ugi.jpeg";
+import NSU from "@/clients/NSU.jpeg";
+import Expo from "@/clients/Expo.jpeg";
+import RCL from "@/clients/RCL.jpeg";
 
 export function Testimonial() {
   return (
     <div className="mx-4 sm:mx-8 md:mx-16 rounded-md flex flex-col antialiased dark:bg-grid-white/[0.05] relative z-1 overflow-hidden">
-      <h2 className="text-2xl sm:text-3xl font-semibold py-4">See what our users have to say</h2>
+      <h2 className="text-2xl sm:text-3xl font-semibold py-4">See what our clients have to say</h2>
+      <div className="pb-6">
+        <p className="text-sm sm:text-base text-gray-300 mb-3"></p>
+        <InfiniteMovingCards
+          items={clientCarouselItems}
+          direction="right"
+          speed="slow"
+        />
+      </div>
       <InfiniteMovingCards
         items={testimonials}
         direction="right"
@@ -54,4 +74,33 @@ const testimonials = [
     title: "",
   },
 ];
+
+const clients = [
+  { name: "Aftab Group", logo: aftab },
+  { name: "Bangladesh University of Professionals", logo: bup },
+  { name: "The Eagles Company", logo: eagles },
+  { name: "Golden Harvest", logo: goldenHarvest },
+  { name: "Grey Stone PVT", logo: gs },
+  { name: "Hellenic Group", logo: hellenic },
+  { name: "Rokomari Knit Design", logo: rokomari },
+  { name: "Uttara Group of Industries", logo: ugi },
+  { name: "North South University", logo: NSU },
+  { name: "Expo Bangla", logo: Expo },
+  { name: "Rider Cargo Limited", logo: RCL },
+];
+
+const clientCarouselItems = clients.map((client) => ({
+  quote: (
+    <div className="flex min-h-[130px] items-center justify-center">
+      <Image
+        src={client.logo}
+        alt={`${client.name} logo`}
+        className="h-20 w-auto object-contain sm:h-24 md:h-28"
+        priority={false}
+      />
+    </div>
+  ),
+  name: client.name,
+  title: "",
+}));
 

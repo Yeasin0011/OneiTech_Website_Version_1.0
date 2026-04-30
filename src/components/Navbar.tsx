@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 
+const ONEI_CRM_HREF = "/product/onicerm";
+
 export function NavbarMenu() {
   return (
     <div className="relative w-full flex items-center justify-center">
@@ -22,32 +24,30 @@ function DesktopNavbar({ className }: { className?: string }) {
   return (
     <div className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}>
       <Menu setActive={setActive}>
-        <MenuItem setActive={setActive} active={active} item="Services" href="/services">
+        <MenuItem setActive={setActive} active={active} item="Product" href="/home?section=softwares">
+          <div className="flex gap-4">
+            <div className="flex flex-col space-y-4 text-sm">
+              <HoveredLink href="/product/oneifreight">OneiFreight</HoveredLink>
+              <HoveredLink href="/product/oneicore">OneiCore</HoveredLink>
+              <HoveredLink href={ONEI_CRM_HREF}>OneiCRM</HoveredLink>
+            </div>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Services" href="/home?section=features">
           <div className="flex gap-4">
             <div className="flex flex-col space-y-4 text-sm">
               <HoveredLink href="/services/software-dev-and-erp-solution">Software Development and ERP Solution</HoveredLink>
               <HoveredLink href="/services/network-solutions">Network Solutions</HoveredLink>
-              <HoveredLink href="/services/backup-and-disaster-recovery">Backup and Disaster Recovery</HoveredLink>
               <HoveredLink href="/services/marketing-consultancy">Marketing Consultancy</HoveredLink>
-              <HoveredLink href="/services/cloud-onboarding-services">Cloud Onboarding/Services</HoveredLink>
+              {/* <HoveredLink href="/services/cloud-onboarding-services">Cloud Onboarding Services</HoveredLink> */}
               <HoveredLink href="/services/cyber-security">Cyber Security</HoveredLink>
             </div>
-          </div>
-        </MenuItem>
-        <MenuItem setActive={setActive} active={active} item="Products">
-          <div className="flex gap-4">
             <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Freight Management</HoveredLink>
-              <HoveredLink href="/interface-design">HRM</HoveredLink>
-              <HoveredLink href="/seo">Accounting</HoveredLink>
-            </div>
-            <div className="flex flex-col space-y-4 text-sm">
-              <HoveredLink href="/web-dev">Fixed Asset MGT</HoveredLink>
-              <HoveredLink href="/interface-design">Provident Fund MGT</HoveredLink>
-              <HoveredLink href="/seo">Hospital MGT</HoveredLink>
-              <HoveredLink href="/branding">CRM</HoveredLink>
-              <HoveredLink href="/branding">Vat MGT</HoveredLink>
-              <HoveredLink href="/branding">Income Tax Return MGT</HoveredLink>
+              <HoveredLink href="/services/ui-ux-design">UI/UX Design</HoveredLink>
+              <HoveredLink href="/services/end-user-workplace-support">End User Workplace Support</HoveredLink>
+              <HoveredLink href="/services/web-and-app-development">Web and App Development</HoveredLink>
+              <HoveredLink href="/services/domain-hosting-and-email-services">Domain, Hosting and Email Services</HoveredLink>
+              <HoveredLink href="/services/ai-and-machine-learning">AI and Machine Learning</HoveredLink>
             </div>
           </div>
         </MenuItem>
@@ -97,52 +97,60 @@ function MobileNavbar() {
         <div className="bg-[#020817] border-b border-white/[0.1] shadow-xl overflow-y-auto max-h-[80vh]">
           <nav className="flex flex-col divide-y divide-white/[0.08] px-4">
 
-            {/* Services */}
+            {/* Product */}
             <div>
-              <button
-                onClick={() => setServicesOpen((v) => !v)}
-                className="w-full flex items-center justify-between py-4 text-white text-base font-medium"
-              >
-                Services
-                <svg className={cn("w-4 h-4 transition-transform", servicesOpen && "rotate-180")} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {servicesOpen && (
+              <div className="w-full flex items-center justify-between py-4">
+                <Link href="/home?section=softwares" onClick={close} className="text-white text-base font-medium hover:text-teal-400 transition-colors">
+                  Product
+                </Link>
+                <button
+                  onClick={() => setProductsOpen((v) => !v)}
+                  aria-label="Toggle product menu"
+                  className="text-white p-1"
+                >
+                  <svg className={cn("w-4 h-4 transition-transform", productsOpen && "rotate-180")} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+              {productsOpen && (
                 <div className="flex flex-col gap-3 pb-4 pl-3 text-sm text-gray-300">
-                  <Link href="/services" onClick={close} className="hover:text-teal-400 transition-colors">All Services</Link>
-                  <Link href="/services/software-dev-and-erp-solution" onClick={close} className="hover:text-teal-400 transition-colors">Software Dev & ERP Solution</Link>
-                  <Link href="/services/network-solutions" onClick={close} className="hover:text-teal-400 transition-colors">Network Solutions</Link>
-                  <Link href="/services/backup-and-disaster-recovery" onClick={close} className="hover:text-teal-400 transition-colors">Backup & Disaster Recovery</Link>
-                  <Link href="/services/marketing-consultancy" onClick={close} className="hover:text-teal-400 transition-colors">Marketing Consultancy</Link>
-                  <Link href="/services/cloud-onboarding-services" onClick={close} className="hover:text-teal-400 transition-colors">Cloud Onboarding/Services</Link>
-                  <Link href="/services/cyber-security" onClick={close} className="hover:text-teal-400 transition-colors">Cyber Security</Link>
+                  <Link href="/product/oneifreight" onClick={close} className="hover:text-teal-400 transition-colors">OneiFreight</Link>
+                  <Link href="/product/oneicore" onClick={close} className="hover:text-teal-400 transition-colors">OneiCore</Link>
+                  <Link href={ONEI_CRM_HREF} onClick={close} className="hover:text-teal-400 transition-colors">OneiCRM</Link>
                 </div>
               )}
             </div>
 
-            {/* Products */}
+            {/* Services */}
             <div>
-              <button
-                onClick={() => setProductsOpen((v) => !v)}
-                className="w-full flex items-center justify-between py-4 text-white text-base font-medium"
-              >
-                Products
-                <svg className={cn("w-4 h-4 transition-transform", productsOpen && "rotate-180")} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {productsOpen && (
+              <div className="w-full flex items-center justify-between py-4">
+                <Link href="/home?section=features" onClick={close} className="text-white text-base font-medium hover:text-teal-400 transition-colors">
+                  Services
+                </Link>
+                <button
+                  onClick={() => setServicesOpen((v) => !v)}
+                  aria-label="Toggle services menu"
+                  className="text-white p-1"
+                >
+                  <svg className={cn("w-4 h-4 transition-transform", servicesOpen && "rotate-180")} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+              </div>
+              {servicesOpen && (
                 <div className="flex flex-col gap-3 pb-4 pl-3 text-sm text-gray-300">
-                  <Link href="/web-dev" onClick={close} className="hover:text-teal-400 transition-colors">Freight Management</Link>
-                  <Link href="/interface-design" onClick={close} className="hover:text-teal-400 transition-colors">HRM</Link>
-                  <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Accounting</Link>
-                  <Link href="/web-dev" onClick={close} className="hover:text-teal-400 transition-colors">Fixed Asset MGT</Link>
-                  <Link href="/interface-design" onClick={close} className="hover:text-teal-400 transition-colors">Provident Fund MGT</Link>
-                  <Link href="/seo" onClick={close} className="hover:text-teal-400 transition-colors">Hospital MGT</Link>
-                  <Link href="/branding" onClick={close} className="hover:text-teal-400 transition-colors">CRM</Link>
-                  <Link href="/branding" onClick={close} className="hover:text-teal-400 transition-colors">Vat MGT</Link>
-                  <Link href="/branding" onClick={close} className="hover:text-teal-400 transition-colors">Income Tax Return MGT</Link>
+                  <Link href="/home?section=features" onClick={close} className="hover:text-teal-400 transition-colors">All Services</Link>
+                  <Link href="/services/software-dev-and-erp-solution" onClick={close} className="hover:text-teal-400 transition-colors">Software Development and ERP Solution</Link>
+                  <Link href="/services/network-solutions" onClick={close} className="hover:text-teal-400 transition-colors">Network Solutions</Link>
+                  <Link href="/services/marketing-consultancy" onClick={close} className="hover:text-teal-400 transition-colors">Marketing Consultancy</Link>
+                  {/* <Link href="/services/cloud-onboarding-services" onClick={close} className="hover:text-teal-400 transition-colors">Cloud Onboarding Services</Link> */}
+                  <Link href="/services/cyber-security" onClick={close} className="hover:text-teal-400 transition-colors">Cyber Security</Link>
+                  <Link href="/services/ui-ux-design" onClick={close} className="hover:text-teal-400 transition-colors">UI/UX Design</Link>
+                  <Link href="/services/end-user-workplace-support" onClick={close} className="hover:text-teal-400 transition-colors">End User Workplace Support</Link>
+                  <Link href="/services/web-and-app-development" onClick={close} className="hover:text-teal-400 transition-colors">Web and App Development</Link>
+                  <Link href="/services/domain-hosting-and-email-services" onClick={close} className="hover:text-teal-400 transition-colors">Domain, Hosting and Email Services</Link>
+                  <Link href="/services/ai-and-machine-learning" onClick={close} className="hover:text-teal-400 transition-colors">AI and Machine Learning</Link>
                 </div>
               )}
             </div>
