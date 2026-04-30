@@ -133,12 +133,12 @@ const FreightManagement: React.FC = () => {
           </div>
 
           <div className="space-y-8 text-gray-200 leading-relaxed">
-            <p className="text-lg">
-              Redefine the boundaries of freight forwarding with Bangladesh's most sophisticated logistics automation platform, a high-performance, unified suite engineered to harmonize complex supply chains, optimize asset utilization, and deliver impeccable service at scale.
+              <p className="text-lg">
+              Redefine the boundaries of freight forwarding with Bangladesh&apos;s most sophisticated logistics automation platform, a high-performance, unified suite engineered to harmonize complex supply chains, optimize asset utilization, and deliver impeccable service at scale.
             </p>
 
-            <p className="text-lg">
-              Accelerate your operational evolution with OneiFreight's elite logistics delivery framework. Purpose-built to empower modern forwarders, our platform is the strategic choice for industry leaders looking to bypass traditional technical debt and deploy a future-ready digital infrastructure in record time.
+              <p className="text-lg">
+              Accelerate your operational evolution with OneiFreight&apos;s elite logistics delivery framework. Purpose-built to empower modern forwarders, our platform is the strategic choice for industry leaders looking to bypass traditional technical debt and deploy a future-ready digital infrastructure in record time.
             </p>
 
             <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-500/50 rounded-lg p-8">
@@ -150,7 +150,7 @@ const FreightManagement: React.FC = () => {
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-blue-300">Integrated Multi-Modal Architecture</h3>
                   <p className="text-gray-300">
-                    Seamlessly manage Ocean and Air freight through a single "source of truth." Our platform synchronizes booking, drayage, and warehousing into a fluid, automated pipeline.
+                    Seamlessly manage Ocean and Air freight through a single &quot;source of truth.&quot; Our platform synchronizes booking, drayage, and warehousing into a fluid, automated pipeline.
                   </p>
                 </div>
 
@@ -171,7 +171,7 @@ const FreightManagement: React.FC = () => {
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-blue-300">Hyper-Localized, Globally Scalable</h3>
                   <p className="text-gray-300">
-                    Leveraging the technical ingenuity of Bangladesh's premier developers, OneiFreight offers the robust security of an enterprise ERP with the agility of a cloud-native SaaS.
+                    Leveraging the technical ingenuity of Bangladesh&apos;s premier developers, OneiFreight offers the robust security of an enterprise ERP with the agility of a cloud-native SaaS.
                   </p>
                 </div>
 
@@ -220,15 +220,15 @@ const FreightManagement: React.FC = () => {
                       Global Compliance
                     </td>
                     <td className="px-6 py-4 text-gray-300 border border-blue-500/30">
-                      Stay "audit-ready" with comprehensive digital trails and automated regulatory reporting.
+                      Stay &quot;audit-ready&quot; with comprehensive digital trails and automated regulatory reporting.
                     </td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
-            <p className="text-lg text-center text-gray-200 mt-12 p-8 bg-blue-900/20 border border-blue-500/50 rounded-lg">
-              <strong>Where Logistics Meets Innovation.</strong> OneiFreight isn't just a tool; it's a competitive engine. We provide the sophisticated digital backbone that allows ambitious freight forwarders to outpace the market, turning operational complexity into a distinct strategic advantage.
+              <p className="text-lg text-center text-gray-200 mt-12 p-8 bg-blue-900/20 border border-blue-500/50 rounded-lg">
+              <strong>Where Logistics Meets Innovation.</strong> OneiFreight isn&apos;t just a tool; it&apos;s a competitive engine. We provide the sophisticated digital backbone that allows ambitious freight forwarders to outpace the market, turning operational complexity into a distinct strategic advantage.
             </p>
           </div>
         </div>
