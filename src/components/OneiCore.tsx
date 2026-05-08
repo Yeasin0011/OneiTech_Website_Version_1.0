@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 import dashboardImage from '@/OneiCore/Dashboard.jpeg';
 import purchaseEntryImage from '@/OneiCore/purchaseentry.jpeg';
-import reportImage from '@/OneiCore/report .jpeg';
+import reportImage from '@/OneiCore/report.jpeg';
 import salesInvoiceImage from '@/OneiCore/salesinvoice.jpeg';
 import warehouseInfoImage from '@/OneiCore/warehouseinfo.jpeg';
 
