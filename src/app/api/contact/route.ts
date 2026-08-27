@@ -3,6 +3,8 @@ import nodemailer from "nodemailer";
 
 const WINDOW_MS = 15 * 60 * 1000;
 const MAX_REQUESTS_PER_WINDOW = 5;
+const MAX_FIELD_LENGTH = 200;
+const MAX_MESSAGE_LENGTH = 5000;
 const ipRequestLog = new Map<string, number[]>();
 
 function getClientIp(req: NextRequest): string {
@@ -16,12 +18,21 @@ function getClientIp(req: NextRequest): string {
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
-  const recent = (ipRequestLog.get(ip) || []).filter(
-    (timestamp) => now - timestamp < WINDOW_MS
-  );
+
+  // Evict any IP whose timestamps have all aged out, so the map doesn't
+  // grow forever with entries for visitors who never come back.
+  ipRequestLog.forEach((timestamps, loggedIp) => {
+    const active = timestamps.filter((timestamp) => now - timestamp < WINDOW_MS);
+    if (active.length === 0) {
+      ipRequestLog.delete(loggedIp);
+    } else if (active.length !== timestamps.length) {
+      ipRequestLog.set(loggedIp, active);
+    }
+  });
+
+  const recent = ipRequestLog.get(ip) || [];
 
   if (recent.length >= MAX_REQUESTS_PER_WINDOW) {
-    ipRequestLog.set(ip, recent);
     return true;
   }
 
@@ -31,15 +42,33 @@ function isRateLimited(ip: string): boolean {
 }
 
 function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return email.length <= MAX_FIELD_LENGTH && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function clean(input: string): string {
   return input.replace(/\s+/g, " ").trim();
 }
 
+function isTrustedOrigin(req: NextRequest): boolean {
+  const origin = req.headers.get("origin");
+  if (!origin) return true;
+
+  try {
+    return new URL(origin).host === req.headers.get("host");
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
+    if (!isTrustedOrigin(req)) {
+      return NextResponse.json(
+        { message: "Request origin not allowed." },
+        { status: 403 }
+      );
+    }
+
     const body = await req.json();
     const ip = getClientIp(req);
 
@@ -64,6 +93,17 @@ export async function POST(req: NextRequest) {
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
         { message: "All fields are required." },
+        { status: 400 }
+      );
+    }
+
+    if (
+      name.length > MAX_FIELD_LENGTH ||
+      subject.length > MAX_FIELD_LENGTH ||
+      message.length > MAX_MESSAGE_LENGTH
+    ) {
+      return NextResponse.json(
+        { message: "One or more fields exceed the maximum allowed length." },
         { status: 400 }
       );
     }
@@ -115,7 +155,8 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ message: "Message sent successfully." }, { status: 200 });
-  } catch {
+  } catch (error) {
+    console.error("Contact form submission failed:", error);
     return NextResponse.json(
       { message: "Failed to process your request. Please try again." },
       { status: 500 }

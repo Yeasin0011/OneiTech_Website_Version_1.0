@@ -1,8 +1,10 @@
 "use client";
 import { useMotionValue } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useMotionTemplate, motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+
+const RANDOM_STRING_UPDATE_INTERVAL_MS = 50;
 
 export const EvervaultCard = ({
   text,
@@ -15,6 +17,7 @@ export const EvervaultCard = ({
   let mouseY = useMotionValue(0);
 
   const [randomString, setRandomString] = useState("");
+  const lastUpdateRef = useRef(0);
 
   useEffect(() => {
     let str = generateRandomString(1500);
@@ -26,8 +29,12 @@ export const EvervaultCard = ({
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
 
-    const str = generateRandomString(1500);
-    setRandomString(str);
+    const now = Date.now();
+    if (now - lastUpdateRef.current > RANDOM_STRING_UPDATE_INTERVAL_MS) {
+      lastUpdateRef.current = now;
+      const str = generateRandomString(1500);
+      setRandomString(str);
+    }
   }
 
   return (

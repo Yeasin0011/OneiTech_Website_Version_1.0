@@ -4,7 +4,7 @@ import projects from '@/data/projects';
 export default function ProjectDetail({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
-  const project = projects.find(p => p.link === `/projects/${slug}`);
+  const project = projects.find(p => p.link.endsWith(`/${slug}`));
 
   if (!project) {
     return <div className="text-center py-16 text-gray-600">Project not found</div>;
